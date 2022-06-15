@@ -20,3 +20,10 @@ function delete($table, $value){
         mysqli_query($conn, $sql);
         return mysqli_affected_rows($conn);
 }
+
+function tambah($table, $data){
+        global $conn;
+        $sql = "INSERT INTO $table VALUES ($data)";
+        mysqli_query($conn, $sql);
+        return mysqli_affected_rows($conn);
+}

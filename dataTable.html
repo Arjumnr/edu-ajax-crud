@@ -214,12 +214,30 @@
                     <span aria-hidden="true">×</span>
                   </button>
                 </div>
+
                 <div class="modal-body">
-                  <p>Modal body text goes here.</p>
+                  <form id="formModal">
+                    <div class="mb-3">
+                      <label for="exampleInputUsername">Username</label>
+                      <input type="text" name="username" class="form-control" id="exampleInputUsername"  placeholder="Enter username...">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword">Password</label>
+                      <input type="password" name="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+                    </div>
+                   <div class="mb-3">
+                      <label for="selectRole" class="form-label" >Pilih Role</label>
+                      <select class="form-control" name="role" id="role">
+                        <option value="">Pilih Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                      </select>
+                   </div>
+                  </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" onclick="closeModal()" class="btn btn-secondary">Close</button>
-                  <button type="button"  class="btn btn-primary" onclick="formTambah()">Save changes</button>
+                  <button type="button"  class="btn btn-primary" onclick="tambahUser()">Save </button>
                 </div>
               </div>
             </div>
@@ -291,6 +309,34 @@
               }
             });
           }
+        });
+      }
+
+      function tambahUser() {
+        console.log("tambahUser");
+        $.ajax({
+          url: "controller/tambah.php",
+          method: "POST",
+          data: $("#formModal").serialize(),
+          dataType: "json",
+        }).then(function (v){
+          v = JSON.parse(v);
+          if(v.status == "success"){
+            iziToast.success({
+              title: "Success",
+              message: "Data Added",
+              position: "topRight",
+            });
+            showData();
+            closeModal();
+          }else{
+            iziToast.error({
+              title: "Error",
+              message: "Data Not Added",
+              position: "topRight",
+            });
+          }
+        
         });
       }
 
