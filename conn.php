@@ -23,7 +23,6 @@ function delete($table, $value){
 
 function tambah($table, $data){
         global $conn;
-        $sql = "INSERT INTO $table VALUES ($data)";
-        mysqli_query($conn, $sql);
+        mysqli_query($conn, "INSERT INTO $table VALUES $data");
         return mysqli_affected_rows($conn);
 }

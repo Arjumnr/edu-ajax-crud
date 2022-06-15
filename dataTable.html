@@ -227,7 +227,7 @@
                     </div>
                    <div class="mb-3">
                       <label for="selectRole" class="form-label" >Pilih Role</label>
-                      <select class="form-control" name="role" id="role">
+                      <select class="form-control" name="role" id="roleForm">
                         <option value="">Pilih Role</option>
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
@@ -318,7 +318,6 @@
           url: "controller/tambah.php",
           method: "POST",
           data: $("#formModal").serialize(),
-          dataType: "json",
         }).then(function (v){
           v = JSON.parse(v);
           if(v.status == "success"){
