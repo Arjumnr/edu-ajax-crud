@@ -184,7 +184,7 @@
                   </nav>
                 </div>
                 <div>
-                  <button type="button" class="btn btn-primary">Primary</button>
+                  <button type="button" class="btn btn-primary" onclick="formTambah()">Tambah</button>
                 </div>
               </div>
             </div>
@@ -204,37 +204,26 @@
             </div>
           </div>
           <!-- ./ Content -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+          <!-- Modal -->
+          <div class="modal" tabindex="-1" role="dialog" id="modalForm">
+            <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="ti-close"></i>
+                  <h5 class="modal-title" id="modalTitle"></h5>
+                  <button type="button" class="close" onclick="closeModal()" aria-label="Close">
+                    <span aria-hidden="true">×</span>
                   </button>
                 </div>
-                <div class="modal-body">...</div>
+                <div class="modal-body">
+                  <p>Modal body text goes here.</p>
+                </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" onclick="closeModal()" class="btn btn-secondary">Close</button>
+                  <button type="button"  class="btn btn-primary" onclick="formTambah()">Save changes</button>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Footer -->
-          <footer class="content-footer">
-            <div>© 2020 Gogi - <a href="http://laborasyon.com" target="_blank">Laborasyon</a></div>
-            <div>
-              <nav class="nav">
-                <a href="https://themeforest.net/licenses/standard" class="nav-link">Licenses</a>
-                <a href="#" class="nav-link">Change Log</a>
-                <a href="#" class="nav-link">Get Help</a>
-              </nav>
-            </div>
-          </footer>
-          <!-- ./ Footer -->
-        </div>
         <!-- ./ Content body -->
       </div>
       <!-- ./ Content wrapper -->
@@ -303,6 +292,15 @@
             });
           }
         });
+      }
+
+      function formTambah() {
+        $("#modalForm").show();
+        $("#modalTitle").html("Tambah Data");
+      }
+
+      function closeModal() {
+        $("#modalForm").hide();
       }
     </script>
   </body>
